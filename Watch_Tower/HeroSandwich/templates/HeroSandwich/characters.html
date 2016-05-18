@@ -1,0 +1,11 @@
+{% if recent_characters %}
+    <ul>
+    {% for character in recent_characters %}
+        <li>
+          <a href="/characters/{{ character.id }}/">
+          {{ character.title }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+{% endif %}
