@@ -1,0 +1,11 @@
+{% if recent_powers %}
+    <ul>
+    {% for superpower in recent_powers %}
+        <li>
+          <a href="/superpowers/{{ superpower.id }}/">
+          {{ superpower.superpower }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+{% endif %}

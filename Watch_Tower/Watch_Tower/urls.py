@@ -18,5 +18,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^characters/', include('HeroSandwich.urls')),
+    url(r'^superpowers/', include('HeroSandwich.urls')),
+    url(r'^weapons/', include('HeroSandwich.urls')),
+    url(r'^heroes/$', 'HeroSandwich.views.heroes_list'),
+    url(r'^heroes/(\d+)$', 'HeroSandwich.views.hero_details'),
     url(r'^admin/', admin.site.urls),
 ]
