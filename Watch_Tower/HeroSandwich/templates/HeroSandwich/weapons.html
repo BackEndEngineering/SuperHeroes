@@ -2,8 +2,8 @@
     <ul>
     {% for weapon in recent_weapons %}
         <li>
-          <a href="/weapons/{{ weapon.id }}/">
-          {{ weapon.title }}
+          <a href="{% url 'weapons' weapon.id %}">
+          {{ weapon.name }}
         </a>
       </li>
     {% endfor %}

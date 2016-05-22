@@ -2,8 +2,8 @@
     <ul>
     {% for character in recent_characters %}
         <li>
-          <a href="/characters/{{ character.id }}/">
-          {{ character.superhero }}
+          <a href="{% url 'characters' character.id %}">
+          {{ character.name }}
         </a>
       </li>
     {% endfor %}

@@ -1,9 +1,9 @@
-{% if recent_powers %}
+{% if recent_superpower %}
     <ul>
-    {% for superpower in recent_powers %}
+    {% for superpowers in recent_superpowers %}
         <li>
-          <a href="/superpowers/{{ superpower.id }}/">
-          {{ superpower.superpower }}
+          <a href="/superpowers/{{ superpowers.id }}/">
+          {{ superpowers.superpowers }}
         </a>
       </li>
     {% endfor %}

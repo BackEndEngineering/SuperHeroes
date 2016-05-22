@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import HeroSandwich
 
 urlpatterns = [
-    url(r'^characters/', include('HeroSandwich.urls')),
-    url(r'^superpowers/', include('HeroSandwich.urls')),
-    url(r'^weapons/', include('HeroSandwich.urls')),
-    url(r'^heroes/$', 'HeroSandwich.views.heroes_list'),
-    url(r'^heroes/(\d+)$', 'HeroSandwich.views.hero_details'),
-    url(r'^admin/', admin.site.urls),
+     url(r'^omniverse/', include('HeroSandwich.urls')),
+    # url(r'^chracters/$', 'HeroSandwich.view_character'),
+    #url(r'^heroes/(\d+)$', 'simplecontent.views.hero_details'),
+     url(r'^admin/', admin.site.urls),
 ]

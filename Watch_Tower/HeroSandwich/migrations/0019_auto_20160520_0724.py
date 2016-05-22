@@ -41,13 +41,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='superheropower',
             name='hero',
-            field=models.ForeignKey(default=datetime.datetime(2016, 5, 20, 7, 24, 13, 177251, tzinfo=utc), on_delete=django.db.models.deletion.CASCADE, to='HeroSandwich.SuperHero'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='HeroSandwich.SuperHero'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='superheropower',
             name='power',
-            field=models.ForeignKey(default=datetime.datetime(2016, 5, 20, 7, 24, 25, 488608, tzinfo=utc), on_delete=django.db.models.deletion.CASCADE, to='HeroSandwich.Power'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='HeroSandwich.Power'),
             preserve_default=False,
         ),
     ]
