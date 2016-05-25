@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from dateutil.relativedelta import relativedelta
 
 
 class Photo(models.Model):
@@ -36,6 +36,9 @@ class Weapon(models.Model):
 
 class Character(models.Model):
     name = models.CharField(max_length=128)
+    description = models.OneToOneField('Description', null=True)
+
+
 
 
     def __str__(self):
@@ -63,8 +66,8 @@ class Character(models.Model):
         hw = SuperHeroWeapon.create(hero=self, weapon=weapon, description=description)
 
         def __str__(self):
-            #return self.name
             return str(self.id) + ": " + self.name
+
 class SuperHeroPower(models.Model):
     hero = models.ForeignKey('Character')
     power = models.ForeignKey('Power')
@@ -90,3 +93,16 @@ class ColorEye(models.Model):
 
     def __str__(self):
         return self.name
+
+class Description(models.Model):
+    description = models.TextField()
+    real_name = models.CharField(max_length=128)
+    height = models.CharField(max_length=128)
+    weight = models.CharField(max_length=128)
+    powers = models.CharField(max_length=700)
+    abilities = models.CharField(max_length=128)
+    group_affiliations = models.CharField(max_length=128)
+    first_appearance = models.CharField(max_length=128)
+
+    def __str__(self):
+        return str(self.id) + " real_name: " + str(self.real_name)

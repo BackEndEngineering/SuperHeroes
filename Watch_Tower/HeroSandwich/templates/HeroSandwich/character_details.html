@@ -1,6 +1,42 @@
+{% extends 'HeroSandwich/base.html' %}
+
+{% block title %}Characters{% endblock %}
+
+{% block content %}
+
 <article>
-<h1>{{ character.superhero }}</h1>
+  <h1 class='text-success'>{{ character.name }}</h1>
 
-<p>{{ character.article_text }}</p>
+<p>{{ character.description.description}}</p>
+<hr>
+  <h3 class='text-success'>Real Name</h3>
 
+    {{ character.description.real_name}}
+  <hr>
+    <h3 class='text-success'>Height</h3>
+
+<p>{{ character.description.height}}</p>
+<hr>
+<h3 class='text-success'>Weight</h3>
+
+    {{ character.description.weight}}
+<hr>
+<h3 class='text-success'>Powers</h3>
+
+<p> {{ character.description.powers}}</p>
+<hr>
+<h3 class='text-success'>Abilities</h3>
+
+    {{ character.description.abilities}}
+<hr>
+<h3 class='text-success'>Group Affiliations</h3>
+
+<p class="text-primary"> {{ character.description.group_affiliations}}</p>
+<hr>
+<h3 class='text-success'>First Appearance</h3>
+
+    {{ character.description.first_appearance}}
 </article>
+
+<p><a href="{% url 'characters:characters' %}">back to list</a></p>
+{% endblock %}

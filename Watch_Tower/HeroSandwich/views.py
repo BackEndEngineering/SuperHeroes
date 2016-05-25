@@ -1,31 +1,30 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Character, Weapon, SuperHeroPower, Team, ColorEye
+from .models import Character, Weapon, SuperHeroPower, Team, ColorEye, Description
 #from django.http import HttpResponse, Http404
 from django.template import loader
 
 def index(request):
-    recent_characters = Character.objects.order_by('-publish_date')[:5]
+    recent_characters = Character.objects.all()
     context = {'recent_characters': recent_characters}
     return render(request, 'HeroSandwich/characters.html', context)
 
 def view_character(request, character_id):
-
-    #try:
-    #    character = Character.objects.get(id=character_id)
     character = get_object_or_404(Character, id=character_id)
-    #except Character.DoesNotExist:
-    #    raise Http404("No such article!")
     context = { 'character': character }
     return render(request, 'HeroSandwich/character_details.html', context)
 
-#def superpowers(request):
-#    recent_superpowers = SuperPowers.objects.order_by('-publish_date')[:5]
-#    context = {'recent_superpowers': recent_superpowers}
-#    return render(request, 'HeroSandwich/superpowers.html', context)
+def view_description(request, character_id):
+    description = get_object_or_404(Description, id=character_id)
+    context = { 'description': description }
+    return render(request, 'HeroSandwich/description_details.html', context)
+
+def description(request):
+    recent_descriptions = Description.objects.all()
+    context = {'recent_descriptions': recent_descriptions}
+    return render(request, 'HeroSandwich/description.html', context)
 
 def weapons(request):
-    recent_weapons = get_object_or_404(Weapon, id=weapon_id)
-    #recent_weapons = Weapon.objectsget(id=hero_id)
+    recent_weapons = Weapon.objects.all()
     context = {'recent_weapons': recent_weapons}
     return render(request, 'HeroSandwich/weapons.html', context)
 

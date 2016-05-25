@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='character',
             name='publish_date',
-            field=models.DateTimeField(auto_now_add=True, db_index=True, default=0),
+            field=models.DateTimeField(auto_now_add=True, db_index=True, default='2016-01-01'),
             preserve_default=False,
         ),
     ]
