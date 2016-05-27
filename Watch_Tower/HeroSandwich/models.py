@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 from dateutil.relativedelta import relativedelta
 
 
@@ -31,15 +32,16 @@ class Weapon(models.Model):
     name = models.CharField(max_length=256)
 
     def __str__(self):
-        #return self.name
+
         return str(self.id) + ": " + self.name
 
 class Character(models.Model):
     name = models.CharField(max_length=128)
     description = models.OneToOneField('Description', null=True)
 
-
-
+    @property
+    def cap_name(self):
+        return relativedelta(self.name)
 
     def __str__(self):
         return self.name
@@ -97,6 +99,7 @@ class ColorEye(models.Model):
 class Description(models.Model):
     description = models.TextField()
     real_name = models.CharField(max_length=128)
+    birth_date = models.DateField(blank=True, null=True)
     height = models.CharField(max_length=128)
     weight = models.CharField(max_length=128)
     powers = models.CharField(max_length=700)
@@ -104,5 +107,9 @@ class Description(models.Model):
     group_affiliations = models.CharField(max_length=128)
     first_appearance = models.CharField(max_length=128)
 
+    @property
+    def age(self):
+        return relativedelta(date.today(), self.birth_date)
+
     def __str__(self):
-        return str(self.id) + " real_name: " + str(self.real_name)
+        return str(self.id) +  " real_name: " + str(self.real_name)

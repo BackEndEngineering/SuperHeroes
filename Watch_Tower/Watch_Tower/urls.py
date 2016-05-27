@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import HeroSandwich
+from . import views
 
 urlpatterns = [
+     url(r'^', include('django.contrib.auth.urls')),
+     url(r'^$', views.index, name="index"),
      url(r'^omniverse/', include('HeroSandwich.urls')),
     # url(r'^chracters/$', 'HeroSandwich.view_character'),
     #url(r'^heroes/(\d+)$', 'simplecontent.views.hero_details'),

@@ -2,19 +2,23 @@ from django.shortcuts import render, get_object_or_404
 from .models import Character, Weapon, SuperHeroPower, Team, ColorEye, Description
 #from django.http import HttpResponse, Http404
 from django.template import loader
+from .utils import calculate_age, title_name
 
 def index(request):
+
+
     recent_characters = Character.objects.all()
     context = {'recent_characters': recent_characters}
     return render(request, 'HeroSandwich/characters.html', context)
 
 def view_character(request, character_id):
     character = get_object_or_404(Character, id=character_id)
-    context = { 'character': character }
+    context = { 'character': character, 'prettyage': calculate_age(character.description.age), 'cap': title_name(character.name)}
+
     return render(request, 'HeroSandwich/character_details.html', context)
 
-def view_description(request, character_id):
-    description = get_object_or_404(Description, id=character_id)
+def view_description(request, description_id):
+    description = get_object_or_404(Description, id=description_id)
     context = { 'description': description }
     return render(request, 'HeroSandwich/description_details.html', context)
 
@@ -57,3 +61,21 @@ def color_eye_details(request, hero_id):
     eye = ColorEyes.objects.get(id=hero_id)
     context = { 'eye': eye }
     return render(request, 'HeroSandwich/color_eye_details.html', context)
+
+def contact_form(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_value():
+            return HttpResponseRedirect('/articles/')
+    form = ContactForm()
+    return render(request, 'HeroSandwich/contact.html', {'form':form})
+
+def create_article_form(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            articles = form.save()
+            return HttpResponseRedirect
+        pass
+        form = ArticleForm()
+        return render(request, 'HeroSandwich/create_article.html', {'form':form})

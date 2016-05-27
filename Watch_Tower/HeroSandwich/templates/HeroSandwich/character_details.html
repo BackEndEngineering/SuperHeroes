@@ -5,13 +5,22 @@
 {% block content %}
 
 <article>
-  <h1 class='text-success'>{{ character.name }}</h1>
+  <h1 class='text-success'>{{ cap }}</h1>
 
 <p>{{ character.description.description}}</p>
 <hr>
   <h3 class='text-success'>Real Name</h3>
 
-    {{ character.description.real_name}}
+  <p>{{ character.description.real_name}}</p>
+<hr>
+    <h3 class='text-success'>Born</h3>
+
+  <p>{{ character.description.birth_date }}</p>
+<hr>
+    <h3 class='text-success'>Age</h3>
+
+    <p>{{ prettyage }}</p>
+
   <hr>
     <h3 class='text-success'>Height</h3>
 
@@ -19,7 +28,7 @@
 <hr>
 <h3 class='text-success'>Weight</h3>
 
-    {{ character.description.weight}}
+  <p>{{ character.description.weight}}</p>
 <hr>
 <h3 class='text-success'>Powers</h3>
 

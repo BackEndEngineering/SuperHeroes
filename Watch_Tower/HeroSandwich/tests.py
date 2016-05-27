@@ -15,15 +15,15 @@ class CharacterTestCase(TestCase):
         self.assertEquals("Test #1", first.name)
 
     def testGetCharacter(self):
-        arts = Character.objects.all()
-        self.assertEquals(3, len(arts))
+        info = Character.objects.all()
+        self.assertEquals(3, len(info))
 
     def testCharacterView(self):
         client = Client()
-        art = Character.objects.order_by("name")[:0]
-        url = reverse('HerosSandwich-character', args=[art.name])
+        info = Character.objects.order_by("name")[0]
+        url = reverse('characters:view', args=[info.id])
         resp = client.get(url)
-        self.assertContains(resp, art.name)
+        self.assertContains(resp, info.name)
 
 class DescriptionTestCase(TestCase):
     def setUp(self):
@@ -37,13 +37,13 @@ class DescriptionTestCase(TestCase):
         self.assertEquals("Test #1", first.real_name)
 
     def testGetDescription(self):
-        arts = Description.objects.all()
-        self.assertEquals(3, len(arts))
+        info = Description.objects.all()
+        self.assertEquals(3, len(info))
 
 
     def testDescriptionView(self):
         client = Client()
-        art = Description.objects.order_by("real_name")[0]
-        url = reverse('HerosSandwich-description', args=[art.real_name])
+        info = Description.objects.order_by("real_name")[0]
+        url = reverse('characters:description', args=[info.id])
         resp = client.get(url)
-        self.assertContains(resp, art.real_name)
+        self.assertContains(resp, info.real_name)

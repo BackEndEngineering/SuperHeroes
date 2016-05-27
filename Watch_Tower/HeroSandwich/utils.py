@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-def pretty_age(age):
+def calculate_age(age):
     age_fields = OrderedDict([
         ("year", age.years),
         ("month", age.months),
@@ -27,3 +27,9 @@ def pretty_age(age):
         return "{0}".format(first)
     else:
         return "recently"
+
+
+def title_name(name):
+    Str1 = name
+    Str2 = Str1.upper()
+    return Str2
