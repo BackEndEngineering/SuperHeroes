@@ -1,11 +1,12 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
-
 from HeroSandwich.models import Description, Character
 
 class CharacterTestCase(TestCase):
+
     def setUp(self):
-        Character.objects.create(name="Test #1")
+        des=Description.objects.create(real_name="Test #1")
+        Character.objects.create(name="Test #1", description=des)
         Character.objects.create(name="Test #2")
         Character.objects.create(name="Test #3")
 

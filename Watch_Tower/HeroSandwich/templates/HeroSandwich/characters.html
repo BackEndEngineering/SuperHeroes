@@ -10,7 +10,7 @@
     {% for character in recent_characters %}
         <li>
           <a href="{% url 'characters:view' character.id %}">
-          {{ character.name }}
+          {{ character.cap_name }}
         </a>
       </li>
     {% endfor %}

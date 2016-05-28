@@ -3,10 +3,10 @@ from .models import Character, Weapon, SuperHeroPower, Team, ColorEye, Descripti
 #from django.http import HttpResponse, Http404
 from django.template import loader
 from .utils import calculate_age, title_name
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def index(request):
-
-
     recent_characters = Character.objects.all()
     context = {'recent_characters': recent_characters}
     return render(request, 'HeroSandwich/characters.html', context)

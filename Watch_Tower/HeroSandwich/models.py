@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 from dateutil.relativedelta import relativedelta
-
+from .utils import title_name
 
 class Photo(models.Model):
     image = models.ImageField()
@@ -41,7 +41,7 @@ class Character(models.Model):
 
     @property
     def cap_name(self):
-        return relativedelta(self.name)
+        return title_name(self.name)
 
     def __str__(self):
         return self.name
@@ -106,6 +106,7 @@ class Description(models.Model):
     abilities = models.CharField(max_length=128)
     group_affiliations = models.CharField(max_length=128)
     first_appearance = models.CharField(max_length=128)
+
 
     @property
     def age(self):
