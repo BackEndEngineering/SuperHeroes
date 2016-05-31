@@ -3,39 +3,12 @@ from django.contrib.auth.models import User
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from .utils import title_name
-
-class Photo(models.Model):
-    image = models.ImageField()
-    photographer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    caption = models.CharField(max_length=256)
-
-    def __str__(self):
-        return str(self.id)
+from PIL import Image
 
 
-class SuperPowers(models.Model):
-    superpower = models.CharField(max_length=256)
-    description = models.TextField()
-
-    def __str__(self):
-        return str(self.id) + ": " + self.superpowers
-
-class SuperHeroWeapon(models.Model):
-    hero = models.ForeignKey('Character')
-    weapon = models.ForeignKey('Weapon')
-    description = models.TextField()
-
-    def __str__(self):
-        return self.hero.name + " " + self.weapon.name + " description: " + str(self.description)
-
-class Weapon(models.Model):
-    name = models.CharField(max_length=256)
-
-    def __str__(self):
-
-        return str(self.id) + ": " + self.name
 
 class Character(models.Model):
+
     name = models.CharField(max_length=128)
     description = models.OneToOneField('Description', null=True)
 
@@ -70,6 +43,39 @@ class Character(models.Model):
         def __str__(self):
             return str(self.id) + ": " + self.name
 
+
+class Photo(models.Model):
+    image = models.ImageField()
+    photographer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    caption = models.CharField(max_length=256)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class SuperPowers(models.Model):
+    superpower = models.CharField(max_length=256)
+    description = models.TextField()
+
+    def __str__(self):
+        return str(self.id) + ": " + self.superpowers
+
+class SuperHeroWeapon(models.Model):
+    hero = models.ForeignKey('Character')
+    weapon = models.ForeignKey('Weapon')
+    description = models.TextField()
+
+    def __str__(self):
+        return self.hero.name + " " + self.weapon.name + " description: " + str(self.description)
+
+class Weapon(models.Model):
+    name = models.CharField(max_length=256)
+
+    def __str__(self):
+
+        return str(self.id) + ": " + self.name
+
+
 class SuperHeroPower(models.Model):
     hero = models.ForeignKey('Character')
     power = models.ForeignKey('Power')
@@ -96,11 +102,15 @@ class ColorEye(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Description(models.Model):
+    #cover_photo = models.OneToOneField('Photo', null=True, related_name='cover_photo')
     description = models.TextField()
+    image = models.ImageField()
     real_name = models.CharField(max_length=128)
     birth_date = models.DateField(blank=True, null=True)
-    height = models.CharField(max_length=128)
+    height = models.CharField(max_length=175)
     weight = models.CharField(max_length=128)
     powers = models.CharField(max_length=700)
     abilities = models.CharField(max_length=128)

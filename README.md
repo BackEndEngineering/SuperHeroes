@@ -33,13 +33,13 @@ Other abilities
 ## <pictures>
 Story: As a Visitor I want to see face pictures of characters so that, I can match name with face .
 Estimate: 5
-Actual:
+Actual:  
 Pull Request:
 
 ## <profile>
 Story: As a Visitor I want to see Photos in Description so that I can see it as a profile.
 Estimate: 4
-Actual:
+Actual:   9
 Pull Request:
 
 
@@ -47,7 +47,7 @@ Pull Request:
 ## <buttons>
 Story: As a Developer I want add buttons so that user can enter Interact with the pages.
 Estimate: 3
-Actual:
+Actual:  1
 Pull Request:
 
 ## <video>

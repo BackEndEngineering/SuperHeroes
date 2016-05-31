@@ -19,6 +19,7 @@ def view_character(request, character_id):
 
 def view_description(request, description_id):
     description = get_object_or_404(Description, id=description_id)
+    response = FileResponse(open(description.image.url, 'rb'), content_type='image/' + image_type)
     context = { 'description': description }
     return render(request, 'HeroSandwich/description_details.html', context)
 
@@ -79,3 +80,18 @@ def create_article_form(request):
         pass
         form = ArticleForm()
         return render(request, 'HeroSandwich/create_article.html', {'form':form})
+
+def cover_photo(request, description_id, image_type="jpg"):
+
+    if image_type not in ['bmp', 'png', 'jpg']:
+        return HttpResponseNotFound("No such type")
+
+    try:
+        article = description.objects.get(id=description_id)
+    except Article.DoesNotExist:
+        raise Http404("No such article!")
+
+    cover_photo = description.cover_photo
+    response = FileResponse(open(description.cover_photo.image.url, 'rb'), content_type='image/' + image_type)
+
+    return response
