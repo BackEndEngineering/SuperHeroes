@@ -1,7 +1,7 @@
 from .settings import *
 import dj_database_url
 
-DEBUG = False
+#DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1']
 
 # Update database configuration with $DATABASE_URL.
@@ -22,4 +22,4 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY="y0e#_a&wvn&&ps24p10sg&r66=@2mv2rlh@e*nhpcqltu(0m4#"')
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY="y0e#_a&wvn&&ps24p10sg&r66=@2mv2rlh@e*nhpcqltu(0m4#"')
