@@ -5,7 +5,7 @@
 <article>
     <dl class="dl-horizontal">
 
-<img src='{{ character.description.image.url }}' align="right" class="img-thumbnail" />
+<img src='{{ character.description.image.url }}' align="right" width='483' height='620' class="img-thumbnail" />
 
   <h1 class='text-success'>{{ cap }}</h1>
 
@@ -43,6 +43,7 @@
 </dl>
 </article>
 
-
+{% if 'HeroSandwich.change_description' in perms %}
 <p><a href="{% url 'characters:characters' %}" class="btn btn-primary btn-sm active" role="button">Back to List</a></p>
+{% endif %}
 {% endblock %}

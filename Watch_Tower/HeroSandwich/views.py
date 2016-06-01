@@ -3,7 +3,8 @@ from .models import Character, Weapon, SuperHeroPower, Team, ColorEye, Descripti
 #from django.http import HttpResponse, Http404
 from django.template import loader
 from .utils import calculate_age, title_name
-from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
 def index(request):
@@ -17,6 +18,7 @@ def view_character(request, character_id):
 
     return render(request, 'HeroSandwich/character_details.html', context)
 
+@permission_required('HeroSandwich.moderate_comment')
 def view_description(request, description_id):
     description = get_object_or_404(Description, id=description_id)
     response = FileResponse(open(description.image.url, 'rb'), content_type='image/' + image_type)
@@ -81,17 +83,11 @@ def create_article_form(request):
         form = ArticleForm()
         return render(request, 'HeroSandwich/create_article.html', {'form':form})
 
-def cover_photo(request, description_id, image_type="jpg"):
+@permission_required('HeroSandwich.moderate_comment')
+def moderate_description(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
 
-    if image_type not in ['bmp', 'png', 'jpg']:
-        return HttpResponseNotFound("No such type")
-
-    try:
-        article = description.objects.get(id=description_id)
-    except Article.DoesNotExist:
-        raise Http404("No such article!")
-
-    cover_photo = description.cover_photo
-    response = FileResponse(open(description.cover_photo.image.url, 'rb'), content_type='image/' + image_type)
-
-    return response
+    if request.method == 'POST':
+        pass
+    else:
+        pass

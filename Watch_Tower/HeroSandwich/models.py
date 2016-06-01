@@ -7,6 +7,7 @@ from PIL import Image
 
 
 
+
 class Character(models.Model):
 
     name = models.CharField(max_length=128)
@@ -105,9 +106,13 @@ class ColorEye(models.Model):
 
 
 class Description(models.Model):
-    #cover_photo = models.OneToOneField('Photo', null=True, related_name='cover_photo')
+
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True,
+            width_field="width_field",
+            height_field="height_field")
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     real_name = models.CharField(max_length=128)
     birth_date = models.DateField(blank=True, null=True)
     height = models.CharField(max_length=175)
@@ -117,6 +122,8 @@ class Description(models.Model):
     group_affiliations = models.CharField(max_length=128)
     first_appearance = models.CharField(max_length=128)
 
+ #609X483
+
 
     @property
     def age(self):
@@ -124,3 +131,9 @@ class Description(models.Model):
 
     def __str__(self):
         return str(self.id) +  " real_name: " + str(self.real_name)
+
+    class Meta:
+        permissions = (
+            ("moderate_description", "Can the user moderate description?"),
+            ("view_unmoderated_description", "Can the user view unmoderated description?")
+        )

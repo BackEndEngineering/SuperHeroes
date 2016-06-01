@@ -5,10 +5,10 @@
 {% block content %}
 
 {% if recent_characters %}
-<h1 class='text-success'>Super Heroes</h1>
+<h1 class='text-warning'>SUPERHEROES</h1>
 <ul style="list-style-type:none">
     {% for character in recent_characters %}
-      
+
       </li>
         <li>
           <a href="{% url 'characters:view' character.id %}">

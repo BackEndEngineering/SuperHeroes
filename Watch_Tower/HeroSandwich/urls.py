@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^description/(?P<description_id>[0-9]+)/image\.?(?P<image_type>png|jpg|bmp)?$',
         views.view_description,
         name="image"),
+    url(r'^(?P<description_id>[0-9]+)/moderate$', views.moderate_description),
     url(r'^weapons/$', views.weapons, name="weapons"),
     url(r'^weapons/(?P<weapon_id>[0-9]+)/$', views.weapons, name='weapons'),
     url(r'^contact/$', views.contact_form, name="contact_form"),
