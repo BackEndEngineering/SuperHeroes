@@ -22,4 +22,4 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-SECRET_KEY = os.environ.get("g^4n3m-cxg-h3ecgv9$ttan8kvw03y(1snc71^0fcy(dje85sz")
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY="y0e#_a&wvn&&ps24p10sg&r66=@2mv2rlh@e*nhpcqltu(0m4#"')
