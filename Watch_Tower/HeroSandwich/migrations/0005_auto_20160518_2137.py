@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='omniverse',
             name='multiuniverse',
-            field=models.CharField(default=datetime.datetime(2016, 5, 18, 21, 37, 6, 737152, tzinfo=utc), max_length=30),
+            field=models.CharField(default='', max_length=30),
             preserve_default=False,
         ),
     ]
