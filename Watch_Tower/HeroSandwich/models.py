@@ -8,6 +8,7 @@ from PIL import Image
 
 
 
+
 class Character(models.Model):
 
     name = models.CharField(max_length=128)
