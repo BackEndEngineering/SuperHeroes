@@ -1,0 +1,9 @@
+<h1>List of Teams</h1>
+
+We know about {{ heroes | length}} heroes:
+
+<ul>
+{% for team in teams %}
+   <li> {{ team.name }} </li>
+{% endfor %}
+</ul>

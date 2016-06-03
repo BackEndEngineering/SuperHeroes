@@ -1,0 +1,12 @@
+{% if recent_descriptions %}
+    <ul>
+    {% for description in recent_descriptions %}
+        <li>
+        
+          <a href="{% url 'description' description.id %}">
+          {{ description.name }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,9 @@
+<h1>List of Heroeses</h1>
+
+We know about {{ heroes | length}} heroes:
+
+<ul>
+{% for hero in heroes %}
+   <li> {{ hero.name }} </li>
+{% endfor %}
+</ul>
