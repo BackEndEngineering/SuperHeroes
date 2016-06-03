@@ -1,10 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Character, Weapon, SuperHeroPower, Team, ColorEye, Description
-#from django.http import HttpResponse, Http404
 from django.template import loader
 from .utils import calculate_age, title_name
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required, permission_required
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
+def my_first_api_view(request):
+     pass # do stuff Here
 
 @login_required
 def index(request):
@@ -17,7 +21,8 @@ def view_character(request, character_id):
     context = { 'character': character, 'prettyage': calculate_age(character.description.age), 'cap': title_name(character.name)}
 
     return render(request, 'HeroSandwich/character_details.html', context)
-
+    
+@csrf_protect
 @permission_required('HeroSandwich.moderate_comment')
 def view_description(request, description_id):
     description = get_object_or_404(Description, id=description_id)
