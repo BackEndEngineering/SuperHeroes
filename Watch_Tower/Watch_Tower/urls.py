@@ -19,12 +19,20 @@ import HeroSandwich
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from HeroSandwich.api import UserViewSet, CharacterViewSet
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'character', CharacterViewSet)
 
 urlpatterns = [
      url(r'^', include('django.contrib.auth.urls')),
      url(r'^$', views.index, name="index"),
      url(r'^omniverse/', include('HeroSandwich.urls')),
      url(r'^admin/', admin.site.urls),
+     url(r'^api/', include(router.urls)),
+     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
 if settings.DEBUG:
