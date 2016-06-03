@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('video', embed_video.fields.EmbedVideoField()),
             ],
         ),
+
     migrations.AlterModelOptions(
         name='description',
         options={'permissions': (('moderate_description', 'Can the user moderate description?'), ('view_unmoderated_description', 'Can the user view unmoderated description?'))},
